@@ -22,8 +22,8 @@ block content
        each item in pagination
         form(action="/product", method = "get")
             li.page-item
-            button(class="btn btn-primary ml-2")=item
             input(type="hidden",name="page",value= item)
+            button(class="btn btn-primary ml-2")=item
 
   
             
