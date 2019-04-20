@@ -3,13 +3,10 @@ var controller = require('../controller/user.controller');
 var validate = require('../validate/user.validate');
 
 
-
-
 var router = express.Router();
 
-
-
 router.get('/',controller.index);
+
 router.get('/cookie',function(req,res,next){
     res.cookie('userid',123456);
     res.send('hello');

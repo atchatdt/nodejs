@@ -1,13 +1,15 @@
 require('dotenv').config();
-console.log(process.env.SESSION_SECRET);
+
 const express = require('express');
 const app = express();
 var bodyParser = require('body-parser');
-var userRoutes = require('./routes/user.routes');
 var cookieParser = require('cookie-parser');
-var auth = require('./routes/auth.route');
 
+var auth = require('./routes/auth.route');
+var userRoutes = require('./routes/user.routes');
 var authMiddleware = require('./middlewares/auth.middlewares');
+
+var productRoute = require('./routes/product.route');
 
 
 const port = 3000
@@ -25,6 +27,9 @@ app.get('/', function (req, res) {
 app.use(express.static('public'));
 app.use('/users',authMiddleware.requireAuth,userRoutes);
 app.use('/auth',auth);
+app.use('/product',productRoute);
+
+
 app.listen(port, function(){
     console.log(port);
 })
