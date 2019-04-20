@@ -1,6 +1,7 @@
 var db = require('../db');
 var shortid = require('shortid');
 
+
 module.exports.index =  function (req, res) {
     console.log(db.get('users').value);
     res.render('users/index',{
@@ -12,11 +13,11 @@ module.exports.search = function(req,res){
     
     if(req.query.q){
         var q = req.query.q;
-       console.log(q);
+      // console.log(q);
         var users = db.get('users')
         .find({ name: q })
         .value();
-        console.log('aaaa***' + users.name);
+       // console.log('aaaa***' + users.name);
 
         // var matchUsers =  users.filter(function(user){
         //     return user.name.toLocaleLowerCase().indexOf(q.toLocaleLowerCase()) !== -1;
@@ -35,29 +36,13 @@ module.exports.search = function(req,res){
    
 };
 module.exports.getCreate = function(req,res){
+    console.log(req.cookies);
     res.render('users/create');
 };
 module.exports.postCreate = function(req,res){
 
-    console.log('123');
     req.body.id=shortid.generate();
-    var errors = [];
-
-    if(!req.body.name){
-        errors.push('Name is required');
-    }
-
-    if(!req.body.phone){
-        errors.push('Phone is required');
-    }
-
-    if(errors.length){
-        res.render('users/create',{
-            errors:errors,
-            values: req.body
-        });
-        return; 
-    }
+    //console.log(res.locals);
    db.get('users').push(req.body).write();
     res.redirect('/users');
 };

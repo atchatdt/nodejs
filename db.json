@@ -13,7 +13,19 @@
     {
       "name": "Tuấn",
       "phone": "0123456789",
-      "id": "JWvfm874I"
+      "id": "JWvfm874I",
+      "email": "123@gmail.com",
+      "password": "202cb962ac59075b964b07152d234b70"
+    },
+    {
+      "name": "atchatdt",
+      "phone": "123",
+      "id": "ItGCOiFTW"
+    },
+    {
+      "name": "qwe",
+      "phone": "123",
+      "id": "JjK3Blv_9"
     }
   ]
 }
